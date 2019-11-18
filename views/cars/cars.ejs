@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+
+<div class="container">
+
+    <header class="jumbotron">
+        <h1 class="display-4">Nice cars</h1>
+        <p class="lead">Check out these wheels!</p>
+        <hr class="my-4">
+        <a href="/cars/new-car" class="btn btn-primary btn-lg">Add a car</a>
+    </header>
+    <div class="row">
+        <% cars.forEach(function(car){ %>
+            <div class="col-sm-6 col-md-4 mb-4">
+                <div class="card">
+                    <img src="<%= car.image %>" alt="<%= car.name %>" class="card-img-top" style="max-height: 200px;">
+                    <div class="card-body">
+                        <h4 class="card-title text-center"><%= car.name %></h4>
+                        <a href="/cars/<%= car._id %>" class="card-link ">View more</a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+</div>
+<% include ../partials/footer %>

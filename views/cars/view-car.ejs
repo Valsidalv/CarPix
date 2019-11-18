@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+
+    <div class="card mx-auto" id="car-card">
+        <img src="<%= car.image %>" alt="<%= car.name %>" class="card-img-top">
+        <div class="card-body">
+            <h2 class="card-title"><%= car.name %> </h2>
+            <p class="card-text"><%= car.description %></p>
+            <p class="card-text"><i>Submited by: <%= car.author.username %></i></p>
+            <% if(currentUser && car.author.id.equals(currentUser._id)) { %>
+                <form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
+                    <a href="/cars/<%= car._id %>/edit" class="btn btn-warning btn-sm">Edit</a> 
+                    <input type="submit"  class="btn btn-sm btn-danger" value="Delete">
+                </form>
+            <% } %> 
+        </div>  
+    </div>
+
+    <div class="card">
+        <div class="text-right">
+            <a href="/cars/<%= car._id %>/comments/new-comment" class="btn btn-success">Add comment</a>
+            <a href="/cars" class="btn btn-secondary">Back</a>
+        </div>
+        <% car.comments.forEach(function(comment){ %>
+            <div class="card-body">
+                <h6 class="card-title"><%= comment.author.username %> </h6>
+                <p class="card-text"> - <%= comment.text %></p>
+                <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                    <form action="/cars/<%= car._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                        <a href="/cars/<%= car._id %>/comments/<%= comment._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+                        <input type="submit"  class="btn btn-sm btn-danger" value="Delete">
+                    </form>
+                    <% } %>
+            </div>
+            <hr>
+        <% }); %>
+    </div>       
+
+<% include ../partials/footer %>

@@ -1,0 +1,33 @@
+body {
+    background: lightgrey;
+    background: url("https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#main-header {
+    z-index: 1;
+    /* position: absolute; */
+    margin-top: 20vh;
+    text-align: center;
+    color: grey;
+    width: 300px;
+}
+
+@media (min-width: 768px) { 
+    #car-card {
+        width: 50%;;
+    }
+}
+
+@media (min-width: 576px) {
+    #car-card {
+        width: 60%;;
+    }
+}
+
+@media (min-width: 576px) { 
+    #car-card {
+        width: 70%;
+    }    
+}
